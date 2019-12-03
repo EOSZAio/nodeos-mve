@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Local nodeos data
+.idea
+nodeos/data
+nodeos/protocol_features
+nodeos/nodeos.*

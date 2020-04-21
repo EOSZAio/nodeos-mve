@@ -6,7 +6,7 @@
 #
 ###############################################################################
 
-DIR=~/TCD/nodeos-mve
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DIR=$DIR/nodeos
 
 if [ -f $DIR"/nodeos.pid" ]; then

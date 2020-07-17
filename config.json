@@ -2,5 +2,7 @@
   "NVE_ROOT":"/Users/rory/TCD/nodeos-mve",
   "NVE_NODEOS":"/Users/rory/TCD/nodeos-mve/nodeos",
   "NVE_SCRIPTS":"/Users/rory/TCD/nodeos-mve",
-  "EOSIO_CONTRACTS_ROOT":"/Users/rory/TCD/nodeos-mve/contracts"
+  "EOSIO_CONTRACTS_ROOT":"/Users/rory/TCD/nodeos-mve/contracts",
+  "WALLET_NAME": "development",
+  "WALLET_PASSWORD": "PW5KZK6RA5rsT4t1owECPem1hRBUy744zjAvQF3h2SRKiSfJhvCtG"
 }

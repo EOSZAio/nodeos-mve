@@ -1,19 +1,25 @@
 #!/bin/bash
-################################################################################
-#
-# Scrip Created by http://CryptoLions.io
-# https://github.com/CryptoLions/EOS-Jungle-Testnet
-#
-###############################################################################
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-DIR=$DIR/nodeos
+echo -e "${CYAN}-------------------------NODEOS FOLDERS--------------------------${NC}"
+config="config.json"
+NVE_ROOT="$( jq -r '.NVE_ROOT' "$config" )";
+NVE_NODEOS="$( jq -r '.NVE_NODEOS' "$config" )";
+NVE_SCRIPTS="$( jq -r '.NVE_SCRIPTS' "$config" )";
 
-if [ -f $DIR"/nodeos.pid" ]; then
-	pid=`cat $DIR"/nodeos.pid"`
+cd ${NVE_SCRIPTS}
+
+echo -e "${GREEN}=====stop.sh=====${NC}"
+echo "working folder"
+pwd
+echo -e "${CYAN}NVE_ROOT = ${NVE_ROOT}${NC}"
+echo -e "${CYAN}NVE_NODEOS = ${NVE_NODEOS}${NC}"
+echo -e "${CYAN}NVE_SCRIPTS = ${NVE_SCRIPTS}${NC}"
+
+if [ -f ${NVE_NODEOS}"/nodeos.pid" ]; then
+	pid=`cat ${NVE_NODEOS}"/nodeos.pid"`
 	echo $pid
 	kill $pid
-	rm -r $DIR"/nodeos.pid"
+	rm -r ${NVE_NODEOS}"/nodeos.pid"
 
 	echo -ne "Stoping Nodeos"
 

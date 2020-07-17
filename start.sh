@@ -1,17 +1,29 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-NODEOS=$DIR/nodeos
-DATADIR=$NODEOS/data
+echo -e "${CYAN}-------------------------NODEOS FOLDERS--------------------------${NC}"
+config="config.json"
+NVE_ROOT="$( jq -r '.NVE_ROOT' "$config" )";
+NVE_NODEOS="$( jq -r '.NVE_NODEOS' "$config" )";
+NVE_SCRIPTS="$( jq -r '.NVE_SCRIPTS' "$config" )";
 
-$DIR/stop.sh
+DATADIR=${NVE_NODEOS}/data
+
+cd ${NVE_SCRIPTS}
+
+echo -e "${GREEN}=====start.sh=====${NC}"
+echo "working folder"
+pwd
+echo -e "${CYAN}NVE_ROOT = ${NVE_ROOT}${NC}"
+echo -e "${CYAN}NVE_NODEOS = ${NVE_NODEOS}${NC}"
+echo -e "${CYAN}NVE_SCRIPTS = ${NVE_SCRIPTS}${NC}"
+echo -e "${CYAN}DATADIR = ${DATADIR}${NC}"
 
 nodeos -e -p eosio \
 --max-transaction-time=1000 \
 --data-dir $DATADIR \
---config-dir $NODEOS \
+--config-dir ${NVE_NODEOS} \
 --contracts-console \
---protocol-features-dir $NODEOS/protocol_features \
+--protocol-features-dir ${NVE_NODEOS}/protocol_features \
 --plugin eosio::producer_plugin \
 --plugin eosio::producer_api_plugin \
 --plugin eosio::chain_plugin \
@@ -21,8 +33,4 @@ nodeos -e -p eosio \
 --plugin eosio::history_api_plugin \
 --access-control-allow-origin='*' \
 --http-validate-host=false \
---verbose-http-errors >> $NODEOS/nodeos.tty 2>$NODEOS/nodeos.log & echo $! > $NODEOS/nodeos.pid
-
-sleep 5
-
-curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' | jq
+--verbose-http-errors >> ${NVE_NODEOS}/nodeos.tty 2>${NVE_NODEOS}/nodeos.log & echo $! > ${NVE_NODEOS}/nodeos.pid

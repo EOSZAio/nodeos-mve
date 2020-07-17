@@ -1,0 +1,6 @@
+{
+  "NVE_ROOT":"/Users/rory/TCD/nodeos-mve",
+  "NVE_NODEOS":"/Users/rory/TCD/nodeos-mve/nodeos",
+  "NVE_SCRIPTS":"/Users/rory/TCD/nodeos-mve",
+  "EOSIO_CONTRACTS_ROOT":"/Users/rory/TCD/nodeos-mve/contracts"
+}

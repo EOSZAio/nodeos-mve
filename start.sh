@@ -19,7 +19,6 @@ nodeos -e -p eosio \
 --plugin eosio::http_plugin \
 --plugin eosio::history_plugin \
 --plugin eosio::history_api_plugin \
---access-control-allow-origin='*' \
 --http-validate-host=false \
 --verbose-http-errors >> $NODEOS/nodeos.tty 2>$NODEOS/nodeos.log & echo $! > $NODEOS/nodeos.pid
 

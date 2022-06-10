@@ -7,7 +7,7 @@ DATADIR=$NODEOS/data
 $DIR/stop.sh
 
 nodeos -e -p eosio \
---max-transaction-time=1000 \
+--max-transaction-time=2000 \
 --data-dir $DATADIR \
 --config-dir $NODEOS \
 --contracts-console \

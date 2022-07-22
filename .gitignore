@@ -33,6 +33,6 @@
 
 # Local nodeos data
 .idea
-nodeos/data
+nodeos/data/*
 nodeos/protocol_features
 nodeos/nodeos.*

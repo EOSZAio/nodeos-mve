@@ -7,7 +7,7 @@ DATADIR=$NODEOS/data
 $DIR/stop.sh
 
 nodeos -e -p eosio \
---max-transaction-time=2000 \
+--max-transaction-time=20000 \
 --data-dir $DATADIR \
 --config-dir $NODEOS \
 --contracts-console \
@@ -24,4 +24,4 @@ nodeos -e -p eosio \
 
 sleep 5
 
-curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' | jq
+curl -X POST http://localhost:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' > jq.txt
